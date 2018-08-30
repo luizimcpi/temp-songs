@@ -2,6 +2,7 @@ package com.devlhse.tempsongs.controller;
 
 import com.devlhse.tempsongs.dto.city.City;
 import com.devlhse.tempsongs.exception.CityNotFoundException;
+import com.devlhse.tempsongs.exception.ServiceUnavailbleException;
 import com.devlhse.tempsongs.exception.TrackNotFoundException;
 import com.devlhse.tempsongs.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +25,13 @@ public class CityController {
     }
 
     @RequestMapping(value = "/{cityName}/weather", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<City> getCityWeather(@PathVariable("cityName") String cityName) throws CityNotFoundException {
+    public ResponseEntity<City> getCityWeather(@PathVariable("cityName") String cityName) throws CityNotFoundException, ServiceUnavailbleException {
         City city = cityService.getCityWeather(cityName);
         return ResponseEntity.ok(city);
     }
 
     @RequestMapping(value = "/{cityName}/weather/songs", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<City> getCitySongsByWeather(@PathVariable("cityName") String cityName) throws CityNotFoundException, TrackNotFoundException {
+    public ResponseEntity<City> getCitySongsByWeather(@PathVariable("cityName") String cityName) throws CityNotFoundException, TrackNotFoundException, ServiceUnavailbleException {
         City city = cityService.getCitySongsByWeather(cityName);
         return ResponseEntity.ok(city);
     }
