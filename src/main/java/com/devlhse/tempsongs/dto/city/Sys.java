@@ -1,4 +1,4 @@
-package com.devlhse.tempsongs.dto;
+package com.devlhse.tempsongs.dto.city;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
