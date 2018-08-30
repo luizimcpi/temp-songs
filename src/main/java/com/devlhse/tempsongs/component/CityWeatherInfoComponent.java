@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 public class CityWeatherInfoComponent {
 
     private static final String CITY_PARAMETER = "?q={cityName}&appid=";
-    private static final Logger log = LoggerFactory.getLogger(CityService.class);
+    private static final Logger log = LoggerFactory.getLogger(CityWeatherInfoComponent.class);
 
     @Value("${weather.api.url}")
     private String weatherApiUrl;

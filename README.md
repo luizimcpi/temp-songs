@@ -21,3 +21,15 @@ In the root of this project run the following command
 ./gradlew bootRun
 ```
 
+## Endpoints
+
+City Weather Info
+
+```
+GET http://localhost:8080/cities/{city}/weather
+```
+
+City Songs according to weather
+```
+GET http://localhost:8080/cities/{city}/weather/songs
+```
