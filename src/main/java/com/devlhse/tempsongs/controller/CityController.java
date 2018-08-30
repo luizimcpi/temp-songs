@@ -4,7 +4,6 @@ import com.devlhse.tempsongs.dto.city.City;
 import com.devlhse.tempsongs.exception.CityNotFoundException;
 import com.devlhse.tempsongs.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,18 +15,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/cities")
 public class CityController {
 
-    @Value("${weather.api.url}")
-    private String weatherUrl;
-
-    @Value("${weather.api.key}")
-    private String weatherApiKey;
+    private final CityService cityService;
 
     @Autowired
-    private CityService cityService;
+    public CityController(final CityService cityService) {
+        this.cityService = cityService;
+    }
 
-    @RequestMapping(value = "/{cityName}/songs", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/{cityName}/weather", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<City> getCityWeather(@PathVariable("cityName") String cityName) throws CityNotFoundException {
+        City city = cityService.getCityWeather(cityName);
+        return ResponseEntity.ok(city);
+    }
+
+    @RequestMapping(value = "/{cityName}/weather/songs", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<City> getCitySongsByWeather(@PathVariable("cityName") String cityName) throws CityNotFoundException {
-        City city = cityService.getCitySongsByWeather(weatherUrl, weatherApiKey, cityName);
+        City city = cityService.getCitySongsByWeather(cityName);
         return ResponseEntity.ok(city);
     }
 }
