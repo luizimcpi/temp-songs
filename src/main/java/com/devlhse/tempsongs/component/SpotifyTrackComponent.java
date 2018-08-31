@@ -36,7 +36,7 @@ public class SpotifyTrackComponent {
 
         try {
             HttpHeaders headers = new HttpHeaders();
-            headers.add("Authorization", "Bearer BQCHf8bGzBYJtyeGacbWDGJEgrtbfI-Gta6AK29JIBVAwBmbX7BKONjX64NSOHQ5sljBwEsAloK7b13ppiw");
+            headers.add("Authorization", "Bearer "+this.getSpotifyTokenAuthorization());
             HttpEntity<String> request = new HttpEntity<>(headers);
             ResponseEntity<Playlist> response = restTemplate.exchange(SPOTIFY_API_PLAYLISTS_URL+"/"+playlistId+"/tracks", HttpMethod.GET, request, Playlist.class);
             return response.getBody();
@@ -53,14 +53,18 @@ public class SpotifyTrackComponent {
     private String getSpotifyTokenAuthorization() throws ServiceUnavailbleException {
 
         try {
-            log.info("Creating authorization token...");
+            log.info("Requesting Spotify authorization token...");
+
+            MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
+            body.add("grant_type", "client_credentials");
+
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-            MultiValueMap<String, String> map = new LinkedMultiValueMap<>();
-            map.add("Authorization", "Basic " + SPOTIFY_CLIENT_CREDENTIALS);
-            HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
-            SecurityResponse response = restTemplate.postForObject(SPOTIFY_API_LOGIN_URL, request, SecurityResponse.class);
-            return response.getAccessToken();
+            headers.add("Authorization", "Basic " + SPOTIFY_CLIENT_CREDENTIALS);
+            HttpEntity<?> request = new HttpEntity<Object>(body,headers);
+            ResponseEntity<SecurityResponse> response = restTemplate.exchange(SPOTIFY_API_LOGIN_URL, HttpMethod.POST, request, SecurityResponse.class);
+
+            return response.getBody().getAccessToken();
         }catch (ResourceAccessException e){
             throw new ServiceUnavailbleException("Sorry there is something wrong with spotify authentication service! Try again or later.");
         }
