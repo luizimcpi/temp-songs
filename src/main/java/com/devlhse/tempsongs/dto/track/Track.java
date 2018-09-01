@@ -23,18 +23,8 @@ public class Track {
         return externalUrls;
     }
 
-    @JsonProperty("external_urls")
-    public void setExternalUrls(ExternalUrls externalUrls) {
-        this.externalUrls = externalUrls;
-    }
-
     @JsonProperty("name")
     public String getName() {
         return name;
-    }
-    
-    @JsonProperty("name")
-    public void setName(String name) {
-        this.name = name;
     }
 }

@@ -17,9 +17,4 @@ public class Item {
     public Track getTrack() {
         return track;
     }
-
-    @JsonProperty("track")
-    public void setTrack(Track track) {
-        this.track = track;
-    }
 }

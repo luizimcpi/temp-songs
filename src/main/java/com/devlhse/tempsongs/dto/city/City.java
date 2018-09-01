@@ -53,19 +53,9 @@ public class City {
         return coord;
     }
 
-    @JsonProperty("coord")
-    public void setCoord(Coord coord) {
-        this.coord = coord;
-    }
-
     @JsonProperty("weather")
     public List<Weather> getWeather() {
         return weather;
-    }
-
-    @JsonProperty("weather")
-    public void setWeather(List<Weather> weather) {
-        this.weather = weather;
     }
 
     @JsonProperty("base")
@@ -73,19 +63,9 @@ public class City {
         return base;
     }
 
-    @JsonProperty("base")
-    public void setBase(String base) {
-        this.base = base;
-    }
-
     @JsonProperty("main")
     public Main getMain() {
         return main;
-    }
-
-    @JsonProperty("main")
-    public void setMain(Main main) {
-        this.main = main;
     }
 
     @JsonProperty("visibility")
@@ -93,19 +73,9 @@ public class City {
         return visibility;
     }
 
-    @JsonProperty("visibility")
-    public void setVisibility(Integer visibility) {
-        this.visibility = visibility;
-    }
-
     @JsonProperty("wind")
     public Wind getWind() {
         return wind;
-    }
-
-    @JsonProperty("wind")
-    public void setWind(Wind wind) {
-        this.wind = wind;
     }
 
     @JsonProperty("clouds")
@@ -113,19 +83,9 @@ public class City {
         return clouds;
     }
 
-    @JsonProperty("clouds")
-    public void setClouds(Clouds clouds) {
-        this.clouds = clouds;
-    }
-
     @JsonProperty("dt")
     public Integer getDt() {
         return dt;
-    }
-
-    @JsonProperty("dt")
-    public void setDt(Integer dt) {
-        this.dt = dt;
     }
 
     @JsonProperty("sys")
@@ -133,19 +93,9 @@ public class City {
         return sys;
     }
 
-    @JsonProperty("sys")
-    public void setSys(Sys sys) {
-        this.sys = sys;
-    }
-
     @JsonProperty("id")
     public Integer getId() {
         return id;
-    }
-
-    @JsonProperty("id")
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     @JsonProperty("name")
@@ -153,19 +103,100 @@ public class City {
         return name;
     }
 
-    @JsonProperty("name")
-    public void setName(String name) {
-        this.name = name;
-    }
-
     @JsonProperty("cod")
     public Integer getCod() {
         return cod;
     }
 
-    @JsonProperty("cod")
-    public void setCod(Integer cod) {
-        this.cod = cod;
+
+    public static class Builder {
+
+        private City cityToBuild;
+
+        public Builder(final City city) {
+
+            cityToBuild = new City();
+
+            this.cityToBuild.coord = city.getCoord();
+            this.cityToBuild.weather = city.getWeather();
+            this.cityToBuild.base = city.getBase();
+            this.cityToBuild.main = city.getMain();
+            this.cityToBuild.visibility = city.getVisibility();
+            this.cityToBuild.wind = city.getWind();
+            this.cityToBuild.clouds = city.getClouds();
+            this.cityToBuild.dt = city.getDt();
+            this.cityToBuild.sys = city.getSys();
+            this.cityToBuild.id = city.getId();
+            this.cityToBuild.name = city.getName();
+            this.cityToBuild.cod = city.getCod();
+        }
+
+        public Builder withCoord(final Coord coord) {
+            this.cityToBuild.coord = coord;
+            return this;
+        }
+
+        public Builder withWeather(final List<Weather> weather) {
+            this.cityToBuild.weather = weather;
+            return this;
+        }
+
+        public Builder withBase(final String base) {
+            this.cityToBuild.base = base;
+            return this;
+        }
+
+        public Builder withMain(final Main main) {
+            this.cityToBuild.main = main;
+            return this;
+        }
+
+        public Builder withVisibility(final Integer visibility) {
+            this.cityToBuild.visibility = visibility;
+            return this;
+        }
+
+        public Builder withWind(final Wind wind) {
+            this.cityToBuild.wind = wind;
+            return this;
+        }
+
+        public Builder withClouds(final Clouds clouds) {
+            this.cityToBuild.clouds = clouds;
+            return this;
+        }
+
+        public Builder withDt(final Integer dt) {
+            this.cityToBuild.dt = dt;
+            return this;
+        }
+
+        public Builder withSys(final Sys sys) {
+            this.cityToBuild.sys = sys;
+            return this;
+        }
+
+        public Builder withId(final Integer id) {
+            this.cityToBuild.id = id;
+            return this;
+        }
+
+        public Builder withName(final String name) {
+            this.cityToBuild.name = name;
+            return this;
+        }
+
+        public Builder withCod(final Integer cod) {
+            this.cityToBuild.cod = cod;
+            return this;
+        }
+
+        public City build() {
+            final City builtCity = cityToBuild;
+            cityToBuild = new City();
+            return builtCity;
+        }
+
     }
 
 }

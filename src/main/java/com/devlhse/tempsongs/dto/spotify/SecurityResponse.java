@@ -27,19 +27,9 @@ public class SecurityResponse {
         return accessToken;
     }
 
-    @JsonProperty("access_token")
-    public void setAccessToken(String accessToken) {
-        this.accessToken = accessToken;
-    }
-
     @JsonProperty("token_type")
     public String getTokenType() {
         return tokenType;
-    }
-
-    @JsonProperty("token_type")
-    public void setTokenType(String tokenType) {
-        this.tokenType = tokenType;
     }
 
     @JsonProperty("expires_in")
@@ -47,19 +37,9 @@ public class SecurityResponse {
         return expiresIn;
     }
 
-    @JsonProperty("expires_in")
-    public void setExpiresIn(Integer expiresIn) {
-        this.expiresIn = expiresIn;
-    }
-
     @JsonProperty("scope")
     public String getScope() {
         return scope;
-    }
-
-    @JsonProperty("scope")
-    public void setScope(String scope) {
-        this.scope = scope;
     }
 
 }

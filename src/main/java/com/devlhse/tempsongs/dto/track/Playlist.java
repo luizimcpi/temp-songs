@@ -19,9 +19,4 @@ public class Playlist {
     public List<Item> getItems() {
         return items;
     }
-
-    @JsonProperty("items")
-    public void setItems(List<Item> items) {
-        this.items = items;
-    }
 }

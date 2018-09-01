@@ -22,18 +22,38 @@ public class Coord {
         return lon;
     }
 
-    @JsonProperty("lon")
-    public void setLon(Double lon) {
-        this.lon = lon;
-    }
-
     @JsonProperty("lat")
     public Double getLat() {
         return lat;
     }
 
-    @JsonProperty("lat")
-    public void setLat(Double lat) {
-        this.lat = lat;
+    public static class Builder {
+
+        private Coord coordToBuild;
+
+        public Builder(final Coord coord) {
+
+            coordToBuild = new Coord();
+
+            this.coordToBuild.lon = coord.getLon();
+            this.coordToBuild.lat = coord.getLat();
+        }
+
+        public Coord.Builder withLon(final Double lon) {
+            this.coordToBuild.lon = lon;
+            return this;
+        }
+
+        public Coord.Builder withLat(final Double lat) {
+            this.coordToBuild.lat = lat;
+            return this;
+        }
+
+        public Coord build() {
+            final Coord builtCoord = coordToBuild;
+            coordToBuild = new Coord();
+            return builtCoord;
+        }
+
     }
 }
