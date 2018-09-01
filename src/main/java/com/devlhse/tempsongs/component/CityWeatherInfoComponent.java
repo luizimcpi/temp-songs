@@ -25,8 +25,10 @@ public class CityWeatherInfoComponent {
     @Value("${weather.api.key}")
     private String WEATHER_API_KEY;
 
+    private RestTemplate restTemplate = new RestTemplate();
+
     public City getCityWeatherInfoByName(String cityName) throws CityNotFoundException, ServiceUnavailbleException {
-        RestTemplate restTemplate = new RestTemplate();
+
         City city = null;
         try{
             log.info("Searching weather info for city: " + cityName);
@@ -42,7 +44,7 @@ public class CityWeatherInfoComponent {
     }
 
     public City getCityWeatherInfoByCoordinates(String latitude, String longitude) throws CityNotFoundException, ServiceUnavailbleException {
-        RestTemplate restTemplate = new RestTemplate();
+
         City city = null;
         try{
             log.info("Searching weather info for city with coordinates latitude: " + latitude + " and longitude: "+longitude);
