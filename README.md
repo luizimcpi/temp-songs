@@ -33,3 +33,8 @@ City Songs according to weather
 ```
 GET http://localhost:8080/cities/{city}/weather/songs
 ```
+
+City Songs according to weather using coordinates
+```
+http://localhost:8080/cities/weather/songs?lat={value}&lon={value}
+```

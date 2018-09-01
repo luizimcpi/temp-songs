@@ -10,10 +10,7 @@ import com.devlhse.tempsongs.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/cities")
@@ -35,6 +32,12 @@ public class CityController {
     @RequestMapping(value = "/{cityName}/weather/songs", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Playlist> getCitySongsByWeather(@PathVariable("cityName") String cityName) throws CityNotFoundException, TrackNotFoundException, ServiceUnavailbleException, UnauthorizedException {
         Playlist playlist = cityService.getCitySongsByWeather(cityName);
+        return ResponseEntity.ok(playlist);
+    }
+
+    @RequestMapping(value = "/weather/songs", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Playlist> getCitySongsByWeatherByCoordinates(@RequestParam("lat") String latitude, @RequestParam("lon") String longitude) throws CityNotFoundException, TrackNotFoundException, ServiceUnavailbleException, UnauthorizedException {
+        Playlist playlist = cityService.getCitySongsByWeatherByCoordinates(latitude,longitude);
         return ResponseEntity.ok(playlist);
     }
 }

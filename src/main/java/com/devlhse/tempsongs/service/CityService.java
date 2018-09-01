@@ -25,11 +25,16 @@ public class CityService {
     }
 
     public City getCityWeather(String cityName) throws CityNotFoundException, ServiceUnavailbleException {
-        return cityWeatherInfoComponent.getCityWeatherInfo(cityName);
+        return cityWeatherInfoComponent.getCityWeatherInfoByName(cityName);
     }
 
     public Playlist getCitySongsByWeather(String cityName) throws CityNotFoundException, TrackNotFoundException, ServiceUnavailbleException, UnauthorizedException {
-        City cityWeatherInfo = cityWeatherInfoComponent.getCityWeatherInfo(cityName);
+        City cityWeatherInfo = cityWeatherInfoComponent.getCityWeatherInfoByName(cityName);
+        return songRecommendationComponent.getSongsForCityWeather(cityWeatherInfo);
+    }
+
+    public Playlist getCitySongsByWeatherByCoordinates(String latitude, String longitude) throws CityNotFoundException, TrackNotFoundException, ServiceUnavailbleException, UnauthorizedException {
+        City cityWeatherInfo = cityWeatherInfoComponent.getCityWeatherInfoByCoordinates(latitude, longitude);
         return songRecommendationComponent.getSongsForCityWeather(cityWeatherInfo);
     }
 
