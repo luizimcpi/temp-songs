@@ -1,6 +1,11 @@
 # temp-songs
 
-This is a micro-service able to accept RESTful requests receiving as parameter either city name or lat long coordinates and returns a playlist (only track names is fine) suggestion according to the current temperature.
+Build Status Branch Master
+
+[![Build Status](https://travis-ci.org/luizimcpi/temp-songs.svg?branch=master)](https://travis-ci.org/luizimcpi/temp-songs)
+
+This is a micro-service able to accept RESTful requests receiving as parameter either city name or lat long coordinates and returns a playlist (only track names)
+suggestion according to the current temperature.
 
 ## Business rules
 
