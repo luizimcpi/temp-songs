@@ -25,4 +25,33 @@ public class Wind {
     public Integer getDeg() {
         return deg;
     }
+
+    public static class Builder {
+
+        private Wind windToBuild;
+
+        public Builder(final Wind wind) {
+
+            windToBuild = new Wind();
+
+            this.windToBuild.speed = wind.getSpeed();
+            this.windToBuild.deg = wind.getDeg();
+        }
+
+        public Wind.Builder withSpeed(final Double speed) {
+            this.windToBuild.speed = speed;
+            return this;
+        }
+
+        public Wind.Builder withDeg(final Integer deg) {
+            this.windToBuild.deg = deg;
+            return this;
+        }
+
+        public Wind build() {
+            final Wind builtWind = windToBuild;
+            windToBuild = new Wind();
+            return builtWind;
+        }
+    }
 }

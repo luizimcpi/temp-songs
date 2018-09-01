@@ -42,4 +42,45 @@ public class Weather {
         return icon;
     }
 
+
+    public static class Builder {
+
+        private Weather weatherToBuild;
+
+        public Builder(final Weather weather) {
+
+            weatherToBuild = new Weather();
+
+            this.weatherToBuild.id = weather.getId();
+            this.weatherToBuild.main = weather.getMain();
+            this.weatherToBuild.description = weather.getDescription();
+            this.weatherToBuild.icon = weather.getIcon();
+        }
+
+        public Weather.Builder withId(final Integer id) {
+            this.weatherToBuild.id = id;
+            return this;
+        }
+
+        public Weather.Builder withMain(final String main) {
+            this.weatherToBuild.main = main;
+            return this;
+        }
+
+        public Weather.Builder withDescription(final String description) {
+            this.weatherToBuild.description = description;
+            return this;
+        }
+
+        public Weather.Builder withIcon(final String icon) {
+            this.weatherToBuild.icon = icon;
+            return this;
+        }
+
+        public Weather build() {
+            final Weather builtWeather = weatherToBuild;
+            weatherToBuild = new Weather();
+            return builtWeather;
+        }
+    }
 }

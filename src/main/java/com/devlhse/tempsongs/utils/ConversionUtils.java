@@ -1,4 +1,4 @@
-package com.devlhse.tempsongs;
+package com.devlhse.tempsongs.utils;
 
 public class ConversionUtils {
 

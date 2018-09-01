@@ -5,10 +5,10 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class CityTests {
-    private City VALID_CITY = new City.Builder(new City()).withDt(1).build();
+    private City VALID_CITY = new City.Builder(new City()).build();
 
     @Test
-    public void dtFieldCouldNotBeNull() {
-        Assert.assertNotNull(VALID_CITY.getDt());
+    public void cityCouldNotBeNull() {
+        Assert.assertNotNull(VALID_CITY);
     }
 }

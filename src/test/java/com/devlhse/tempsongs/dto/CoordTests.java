@@ -6,15 +6,10 @@ import org.junit.Test;
 
 public class CoordTests {
 
-    private Coord VALID_COORD = new Coord.Builder(new Coord()).withLat(1.0).withLon(1.0).build();
+    private Coord VALID_COORD = new Coord.Builder(new Coord()).build();
 
     @Test
-    public void coordLatFieldCouldNotBeNull() {
-        Assert.assertNotNull(VALID_COORD.getLat());
-    }
-
-    @Test
-    public void coordLonFieldCouldNotBeNull() {
-        Assert.assertNotNull(VALID_COORD.getLon());
+    public void coordCouldNotBeNull() {
+        Assert.assertNotNull(VALID_COORD);
     }
 }

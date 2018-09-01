@@ -1,6 +1,6 @@
 package com.devlhse.tempsongs.component;
 
-import com.devlhse.tempsongs.ConversionUtils;
+import com.devlhse.tempsongs.utils.ConversionUtils;
 import com.devlhse.tempsongs.dto.city.City;
 import com.devlhse.tempsongs.dto.track.Playlist;
 import com.devlhse.tempsongs.exception.ServiceUnavailbleException;

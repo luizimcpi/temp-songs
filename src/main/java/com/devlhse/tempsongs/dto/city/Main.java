@@ -49,4 +49,52 @@ public class Main {
     public Double getTempMax() {
         return tempMax;
     }
+
+
+    public static class Builder {
+
+        private Main mainToBuild;
+
+        public Builder(final Main main) {
+
+            mainToBuild = new Main();
+
+            this.mainToBuild.temp = main.getTemp();
+            this.mainToBuild.pressure = main.getPressure();
+            this.mainToBuild.humidity = main.getHumidity();
+            this.mainToBuild.tempMin = main.getTempMin();
+            this.mainToBuild.tempMax = main.getTempMax();
+        }
+
+        public Main.Builder withTemp(final Double temp) {
+            this.mainToBuild.temp = temp;
+            return this;
+        }
+
+        public Main.Builder withPressure(final Integer pressure) {
+            this.mainToBuild.pressure = pressure;
+            return this;
+        }
+
+        public Main.Builder withHumidity(final Integer humidity) {
+            this.mainToBuild.humidity = humidity;
+            return this;
+        }
+
+        public Main.Builder withTempMin(final Double tempMin) {
+            this.mainToBuild.tempMin = tempMin;
+            return this;
+        }
+
+        public Main.Builder withTempMax(final Double tempMax) {
+            this.mainToBuild.tempMax = tempMax;
+            return this;
+        }
+
+        public Main build() {
+            final Main builtMain = mainToBuild;
+            mainToBuild = new Main();
+            return builtMain;
+        }
+    }
 }
